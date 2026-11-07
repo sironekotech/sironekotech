@@ -1,0 +1,82 @@
+name: Update profile cards
+
+on:
+  schedule:
+    - cron: "0 15 * * *" # 毎日 0:00 JST
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/update-cards.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-cards
+  cancel-in-progress: false
+
+env:
+  # 色は sironekotech-design のトークンの値（ライト: fur/brown/ink/git-blue/line、ダーク: ink/latte/cream/eye-sky/muted）
+  LIGHT: bg_color=fdfaf4&title_color=8a6235&text_color=2a2521&icon_color=0085d9&border_color=eadfcd
+  DARK: bg_color=2a2521&title_color=c9a97e&text_color=f3e8d8&icon_color=7fa3c0&border_color=6f655a
+  STATS: username=sironekotech&show_icons=true&count_private=true&hide_rank=true&card_width=400
+  LANGS: username=sironekotech&layout=compact&langs_count=6&card_width=400
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # GH_STATS_TOKEN には repo と read:user の権限が要る。core_version は空にして、同梱の固定版を使う
+      - name: Stats (light)
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: stats
+          options: ${{ env.STATS }}&${{ env.LIGHT }}
+          path: profile/stats-light.svg
+          token: ${{ secrets.GH_STATS_TOKEN }}
+          fail_on_error: true
+          core_version: ""
+
+      - name: Stats (dark)
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: stats
+          options: ${{ env.STATS }}&${{ env.DARK }}
+          path: profile/stats-dark.svg
+          token: ${{ secrets.GH_STATS_TOKEN }}
+          fail_on_error: true
+          core_version: ""
+
+      - name: Top languages (light)
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: top-langs
+          options: ${{ env.LANGS }}&exclude_repo=${{ secrets.LANGS_EXCLUDE }}&${{ env.LIGHT }}
+          path: profile/top-langs-light.svg
+          token: ${{ secrets.GH_STATS_TOKEN }}
+          fail_on_error: true
+          core_version: ""
+
+      - name: Top languages (dark)
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: top-langs
+          options: ${{ env.LANGS }}&exclude_repo=${{ secrets.LANGS_EXCLUDE }}&${{ env.DARK }}
+          path: profile/top-langs-dark.svg
+          token: ${{ secrets.GH_STATS_TOKEN }}
+          fail_on_error: true
+          core_version: ""
+
+      - name: Commit cards
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/*.svg
+          git commit -m "chore: プロフィールのカードを更新" || exit 0
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:${GITHUB_REF_NAME}"

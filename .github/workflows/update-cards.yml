@@ -28,6 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ github.ref_name }}
           persist-credentials: false
 
       # GH_STATS_TOKEN には repo と read:user の権限が要る。core_version は空にして、同梱の固定版を使う

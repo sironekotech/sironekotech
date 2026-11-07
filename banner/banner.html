@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700;900&family=Noto+Sans+JP:wght@400;500&family=JetBrains+Mono:wght@500&display=block">
+<style>
+/* 色は sironekotech-design のトークンの値だけ */
+:root{--bg:#fdfaf4;--border:#eadfcd;--name:#2a2521;--tech:#8a6235;--tag:#6f655a;--prompt:#0085d9;--url:#8a6235}
+html.dark{--bg:#2a2521;--border:#6f655a;--name:#f3e8d8;--tech:#c9a97e;--tag:#eadfcd;--prompt:#7fa3c0;--url:#c9a97e}
+html,body{margin:0;background:transparent}
+.b{box-sizing:border-box;width:900px;height:220px;background:var(--bg);border:1.5px solid var(--border);border-radius:18px;display:flex;align-items:center;gap:34px;padding:0 40px}
+.b img{width:160px;height:160px;border-radius:14px;flex:none}
+.p{font-family:"JetBrains Mono",monospace;font-weight:500;font-size:17px;color:var(--prompt)}
+.n{font-family:"Zen Maru Gothic",sans-serif;font-weight:900;font-size:46px;line-height:1.15;color:var(--name);margin-top:2px}
+.n span{color:var(--tech)}
+.t{font-family:"Noto Sans JP",sans-serif;font-size:16.5px;line-height:1.65;color:var(--tag);margin-top:6px}
+.u{display:inline-block;margin-top:12px;font-family:"JetBrains Mono",monospace;font-weight:500;font-size:15px;color:var(--url);border:1.5px solid var(--url);border-radius:999px;padding:3px 14px}
+</style></head><body>
+<div class="b"><img src="cat.png" alt="">
+<div><div class="p">$ whoami</div><div class="n">sironeko<span>tech</span></div>
+<div class="t">Python と TypeScript を中心に、Webサイトからツールまで。<br>ひとりで設計から運用までやりきる、フリーランスのエンジニアです。</div>
+<span class="u">sironekotech.com →</span></div></div>
+<script>if(location.hash==='#dark')document.documentElement.classList.add('dark')</script>
+</body></html>

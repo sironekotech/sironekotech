@@ -1,5 +1,17 @@
-![Stats](https://github-readme-stats.vercel.app/api?username=sironekotech&show_icons=true&theme=tokyonight&hide_border=true&count_private=true)
+<a href="https://sironekotech.com">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="profile/banner-dark.png">
+    <img src="profile/banner-light.png" alt="sironekotech ― Python と TypeScript を中心に、Webサイトからツールまで。ひとりで設計から運用までやりきる、フリーランスのエンジニアです。" width="100%">
+  </picture>
+</a>
 
-![Streak](https://streak-stats.demolab.com?user=sironekotech&theme=tokyonight&hide_border=true)
+<p align="center">
+  <a href="https://sironekotech.com">sironekotech.com</a> ・ <a href="mailto:sironekotech@gmail.com">sironekotech@gmail.com</a>
+</p>
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=sironekotech&layout=compact&theme=tokyonight&hide_border=true)
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="profile/top-langs-dark.svg">
+    <img src="profile/top-langs-light.svg" alt="Most Used Languages" height="170">
+  </picture>
+</p>

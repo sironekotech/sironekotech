@@ -11,10 +11,6 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="profile/stats-dark.svg">
-    <img src="profile/stats-light.svg" alt="GitHub Stats" height="170">
-  </picture>
-  <picture>
     <source media="(prefers-color-scheme: dark)" srcset="profile/top-langs-dark.svg">
     <img src="profile/top-langs-light.svg" alt="Most Used Languages" height="170">
   </picture>
